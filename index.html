@@ -257,7 +257,7 @@ footer a { color: #cfcfd2; }
 <script>
 (function () {
   // Apps Script web app (lead capture). Set by deploy; empty = offline test mode.
-  var API = '__API_URL__';
+  var API = 'https://script.google.com/macros/s/AKfycbznhwV6XmNnAkwtQBFsh8ISJqdtjBr0awhGNTN2Sm0mznP-02rS5qB7NdYDJwH_37Aw/exec';
   var PDF = 'AI-Made-Simple_Claude-Starter-Kit.pdf';
   var params = new URLSearchParams(location.search);
   var source = (params.get('src') || params.get('utm_source') || 'direct').replace(/[^\w-]/g, '').slice(0, 30);
