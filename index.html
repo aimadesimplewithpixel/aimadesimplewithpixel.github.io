@@ -238,7 +238,7 @@ footer a { color: #cfcfd2; }
   <div class="wrap" style="max-width:820px">
     <div class="kicker">Good to know</div>
     <h2>Questions &amp; <span>privacy</span></h2>
-    <details open><summary>What happens to my email?</summary><p>We store it in a private spreadsheet that only AI Made Simple can access. We only email you if you tick the launch box, and then only about our official website. We never sell, rent or share your details, and we don't use them for anything else. Want it deleted? Just ask us on any of our channels.</p></details>
+    <details open><summary>What happens to my email?</summary><p>We store it in a private spreadsheet that only AI Made Simple can access. We only email you if you tick the launch box, and then only about our official website. We never sell, rent or share your details, and we don't use them for anything else. Want it deleted? Just ask us on any of our channels. We also count page visits and downloads per platform (anonymously, with no personal data) to see which videos help people most.</p></details>
     <details><summary>How do I unsubscribe?</summary><p>Every launch email has an unsubscribe link. You can also message us on any of our channels and we'll delete your details.</p></details>
     <details><summary>Is it really free?</summary><p>Yes. No credit card, no trial, nothing to cancel. The guide is free to share with friends too.</p></details>
     <details><summary>Do I need a paid Claude plan?</summary><p>No. The formula and prompts work on the free plan. Some features mentioned in the setup chapter may depend on your plan, and the guide notes that.</p></details>
@@ -263,6 +263,15 @@ footer a { color: #cfcfd2; }
   var source = (params.get('src') || params.get('utm_source') || 'direct').replace(/[^\w-]/g, '').slice(0, 30);
   var $ = function (id) { return document.getElementById(id); };
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // anonymous counts per source (no personal data): one page visit per session, one count per download tap
+  function track(ev) {
+    if (!/^https:\/\/script\.google\.com\//.test(API)) return;
+    try { fetch(API, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ event: ev, source: source }) }); } catch (e) {}
+  }
+  var seen = false; try { seen = sessionStorage.getItem('aims_v') === '1'; sessionStorage.setItem('aims_v', '1'); } catch (e) {}
+  if (!seen) track('visit');
+  $('dl').addEventListener('click', function () { track('download'); });
 
   // step 1 → 2 (no fake verification: we only remember which links were clicked, for the visitor's own view)
   document.querySelectorAll('.soc a').forEach(function (a) { a.addEventListener('click', function () { a.classList.add('done'); }); });
