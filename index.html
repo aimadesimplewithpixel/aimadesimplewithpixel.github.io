@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Claude Starter Kit · AI Made Simple</title>
+<meta name="description" content="Free guide: the 5-part prompt formula, 25 copy-paste prompts and the 7 mistakes almost everyone makes with AI. From AI Made Simple.">
+<meta property="og:title" content="The Claude Starter Kit: free guide">
+<meta property="og:description" content="The 5-part formula, 25 copy-paste prompts and 7 mistakes, fixed. Get better answers from AI in 10 minutes.">
+<meta property="og:image" content="https://aimadesimplewithpixel.github.io/assets/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121214">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+@font-face { font-family: 'Jakarta'; src: url('assets/fonts/PlusJakartaSans.ttf') format('truetype'); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: 'Mono'; src: url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight: 100 800; font-display: swap; }
+:root { --ink: #141414; --night: #121214; --red: #E5322D; --red2: #c9241f; --paper: #F4F3F1; --white: #fff; --grey: #6b6b6b; --line: #dedcd8; --soft: #cfcfd2; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Jakarta', system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.55; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.mono { font-family: 'Mono', ui-monospace, monospace; }
+.kicker { font-family: 'Mono', monospace; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; background: var(--night); color: var(--paper); }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 78% 30%, rgba(229,50,45,.32), transparent 55%), radial-gradient(rgba(255,255,255,.07) 1.2px, transparent 1.6px); background-size: auto, 26px 26px; pointer-events: none; }
+.hero::after { content: ''; position: absolute; right: -20%; top: -10%; width: 70%; height: 130%; background: rgba(255,255,255,.03); clip-path: polygon(0 0, 30% 0, 100% 50%, 30% 100%, 0 100%, 70% 50%); pointer-events: none; }
+nav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255,255,255,.16); }
+.logo .a { font-family: 'Mono'; font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: .12em; line-height: 1; }
+.logo .b { font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: -.01em; }
+.pill { font-family: 'Mono'; font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--red); border: 1.5px solid var(--red); border-radius: 99px; padding: 6px 12px; }
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: center; padding: 34px 0 64px; }
+.hero h1 { font-size: clamp(38px, 6.4vw, 66px); line-height: 1.0; letter-spacing: -.03em; font-weight: 800; margin-top: 14px; }
+.hero h1 span { color: var(--red); }
+.hero .sub { font-size: clamp(17px, 2vw, 20px); color: var(--soft); margin-top: 18px; max-width: 540px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.chips div { font-family: 'Mono'; font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 9px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); }
+.chips b { color: var(--red); }
+.cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; background: var(--red); color: #fff; text-decoration: none; font-weight: 800; font-size: 18px; padding: 16px 26px; border-radius: 12px; box-shadow: 0 10px 30px rgba(229,50,45,.35); transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; }
+.cta:hover { background: var(--red2); transform: translateY(-1px); }
+.note { font-size: 13px; color: #9a9aa0; margin-top: 12px; }
+.mock { filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
+
+/* sections */
+section { padding: 64px 0; }
+h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.08; letter-spacing: -.02em; font-weight: 800; margin-top: 10px; }
+h2 span { color: var(--red); }
+.lead { font-size: 18px; color: #333; max-width: 640px; margin-top: 12px; }
+.inside { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 30px; }
+.box { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.box .n { font-family: 'Mono'; font-weight: 800; font-size: 30px; color: var(--red); line-height: 1; }
+.box h3 { font-size: 17px; margin: 10px 0 6px; }
+.box p { font-size: 14.5px; color: #444; }
+
+/* funnel */
+.funnel { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.steps { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; align-items: start; }
+.step { border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: var(--paper); position: relative; }
+.step.active { border-color: var(--ink); box-shadow: 0 10px 30px rgba(0,0,0,.08); background: #fff; }
+.step .tag { display: inline-block; font-family: 'Mono'; font-size: 12px; font-weight: 800; letter-spacing: .14em; background: var(--ink); color: #fff; padding: 5px 10px; border-radius: 99px; }
+.step h3 { font-size: 22px; margin: 12px 0 6px; line-height: 1.2; }
+.step p.small { font-size: 14.5px; color: #555; }
+.soc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.soc a { display: flex; align-items: center; gap: 10px; text-decoration: none; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; transition: border-color .15s, transform .15s; }
+.soc a:hover { border-color: var(--ink); transform: translateY(-1px); }
+.soc .ic { width: 36px; height: 36px; border-radius: 9px; background: var(--ink); display: flex; align-items: center; justify-content: center; flex: none; }
+.soc .ic svg { width: 19px; height: 19px; fill: #fff; }
+.soc .t { font-weight: 800; font-size: 15px; line-height: 1.2; }
+.soc .u { font-family: 'Mono'; font-size: 11px; color: var(--grey); }
+.soc a.done { border-color: #2e9d4a; }
+.soc a.done .ic { background: #2e9d4a; }
+.honest { font-size: 13px; color: var(--grey); margin-top: 14px; }
+.row-btn { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.btn2 { font-family: inherit; font-weight: 800; font-size: 15px; padding: 12px 18px; border-radius: 10px; border: 1.5px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; }
+.link { background: none; border: 0; font-family: inherit; font-size: 14px; color: var(--grey); text-decoration: underline; cursor: pointer; }
+
+form { margin-top: 14px; }
+label.f { display: block; font-weight: 700; font-size: 14px; margin: 14px 0 6px; }
+label.f small { font-weight: 400; color: var(--grey); }
+input[type=email], input[type=text] { width: 100%; font: inherit; font-size: 16px; padding: 14px 14px; border-radius: 10px; border: 1.5px solid #cfcdc8; background: #fff; color: var(--ink); }
+input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(229,50,45,.18); }
+.check { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--red); flex: none; }
+.check b { display: block; font-size: 14.5px; }
+.check span { font-size: 13.5px; color: #555; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.submit { width: 100%; justify-content: center; margin-top: 18px; }
+.submit[disabled] { opacity: .65; cursor: wait; transform: none; }
+.err { color: var(--red2); font-size: 14px; font-weight: 700; margin-top: 10px; min-height: 1px; }
+.privacy-mini { font-size: 12.5px; color: var(--grey); margin-top: 12px; }
+.locked { opacity: .55; }
+.locked form { pointer-events: none; }
+
+.success { display: none; text-align: left; }
+.success.show { display: block; }
+.success .big { font-size: 30px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin: 10px 0; }
+.success .big span { color: var(--red); }
+
+/* coming soon */
+.soon { background: var(--night); color: var(--paper); position: relative; overflow: hidden; }
+.soon::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 15% 85%, rgba(229,50,45,.28), transparent 55%), radial-gradient(rgba(255,255,255,.07) 1.2px, transparent 1.6px); background-size: auto, 26px 26px; }
+.soon .wrap { position: relative; }
+.soon .card { border: 1.5px solid var(--red); border-radius: 20px; padding: 30px; background: rgba(229,50,45,.06); max-width: 760px; }
+.soon p { color: var(--soft); font-size: 18px; margin-top: 12px; }
+.ghost { display: inline-block; margin-top: 18px; color: #fff; font-weight: 800; text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-top: 10px; }
+.faq summary { font-weight: 800; cursor: pointer; font-size: 16px; }
+.faq details p { margin-top: 8px; font-size: 15px; color: #444; }
+
+footer { background: var(--night); color: #9a9aa0; font-size: 13px; padding: 30px 0 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 30px; justify-content: space-between; align-items: center; }
+footer a { color: #cfcfd2; }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; padding: 16px 0 48px; }
+  .mock { max-width: 340px; margin: 0 auto; width: 100%; }
+  .inside { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .inside { grid-template-columns: 1fr; }
+  .soc { grid-template-columns: 1fr; }
+  section { padding: 48px 0; }
+  .pill { display: none; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><symbol id="mark" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#141414"/><polygon points="20,27 30.5,27 52.5,50 30.5,73 20,73 42,50" fill="#E5322D"/><polygon points="43,27 53.5,27 75.5,50 53.5,73 43,73 65,50" fill="#fff"/><polygon points="79,15.5 81.4,21.6 87.5,24 81.4,26.4 79,32.5 76.6,26.4 70.5,24 76.6,21.6" fill="#E5322D"/></symbol></defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#" aria-label="AI Made Simple"><svg><use href="#mark"/></svg><div><div class="a">AI MADE</div><div class="b">SIMPLE</div></div></a>
+      <div class="pill">FREE GUIDE</div>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Free guide · The Claude Starter Kit</div>
+        <h1>Get better answers from AI <span>in 10 minutes.</span></h1>
+        <p class="sub">Our free 15-page guide shows you the simple formula behind great AI answers, plus 25 copy-paste prompts for work, school, business and everyday life.</p>
+        <div class="chips"><div><b>01</b> 5-part formula</div><div><b>25</b> Copy-paste prompts</div><div><b>10</b> Follow-up moves</div><div><b>07</b> Mistakes, fixed</div></div>
+        <a class="cta" href="#get">Get the free guide ›</a>
+        <p class="note">Free. No credit card. No spam.</p>
+      </div>
+      <img class="mock" src="assets/kit-mockup.png" alt="Preview of The Claude Starter Kit PDF: cover, formula page and prompt page" width="900" height="825">
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">What's inside</div>
+    <h2>Everything you need to <span>stop getting generic answers.</span></h2>
+    <p class="lead">Written in plain English for people who use AI for real work. It's built around Claude, and most of it works in any AI assistant.</p>
+    <div class="inside">
+      <div class="box"><div class="n">01</div><h3>The 5-part formula</h3><p>Role, Task, Context, Format, Example. The reason some people get expert-level answers and others don't.</p></div>
+      <div class="box"><div class="n">25</div><h3>Copy-paste prompts</h3><p>Emails, planning, studying, content, customer replies, meal plans and more. Fill in the brackets and send.</p></div>
+      <div class="box"><div class="n">10</div><h3>Follow-up moves</h3><p>Simple replies that turn a so-so first answer into a great one.</p></div>
+      <div class="box"><div class="n">07</div><h3>Mistakes, fixed</h3><p>The habits that make AI answers bland, and the quick fix for each. Plus a one-page cheat sheet.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="funnel" id="get">
+  <div class="wrap">
+    <div class="kicker">Get your free copy</div>
+    <h2>Two quick steps. <span>Then it's yours.</span></h2>
+    <div class="steps">
+      <div class="step active" id="step1">
+        <span class="tag">STEP 1</span>
+        <h3>Follow us for a new AI tip every day</h3>
+        <p class="small">The guide is the start. The daily videos are where you keep learning. Pick your favorite app (it opens in a new tab):</p>
+        <div class="soc">
+          <a href="https://www.youtube.com/@AIMadeSimpleWithPixel?sub_confirmation=1" target="_blank" rel="noopener" data-p="youtube"><span class="ic"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .6 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-4.8 31 31 0 0 0-.4-4.8zM9.7 15V9l5.8 3z"/></svg></span><span><span class="t">YouTube</span><br><span class="u">Subscribe</span></span></a>
+          <a href="https://www.tiktok.com/@aimadesimplewithpixel" target="_blank" rel="noopener" data-p="tiktok"><span class="ic"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2-2.8V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8.3 8.3 0 0 0 4.8 1.5V6.7a4.8 4.8 0 0 1-4.8-4.7z"/></svg></span><span><span class="t">TikTok</span><br><span class="u">Follow</span></span></a>
+          <a href="https://www.instagram.com/aimadesimplewithpixel" target="_blank" rel="noopener" data-p="instagram"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.5 8.2a5.4 5.4 0 0 0-1.5-3.9 5.4 5.4 0 0 0-3.8-1.5C14.7 2.7 9.3 2.7 7.8 2.8A5.4 5.4 0 0 0 4 4.3a5.4 5.4 0 0 0-1.5 3.9c-.1 1.5-.1 6.9 0 8.4A5.4 5.4 0 0 0 4 20.5a5.4 5.4 0 0 0 3.9 1.5c1.5.1 6.9.1 8.4 0a5.4 5.4 0 0 0 3.8-1.5 5.4 5.4 0 0 0 1.5-3.9c.1-1.5.1-6.9-.1-8.4zM19.5 18.4a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4a3.1 3.1 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3a3.1 3.1 0 0 1 1.7-1.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3z"/></svg></span><span><span class="t">Instagram</span><br><span class="u">Follow</span></span></a>
+          <a href="https://www.facebook.com/Tradesignalsdaily" target="_blank" rel="noopener" data-p="facebook"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.6c0-.9.6-1.1 1-1.1h2.6V1.6L14 1.5c-4 0-4.9 3-4.9 4.9v2.1H6.8v4H9.1V22.5H14V12.5h3.3l.4-4z"/></svg></span><span><span class="t">Facebook</span><br><span class="u">Follow the Page</span></span></a>
+        </div>
+        <div class="row-btn"><button class="btn2" type="button" id="toStep2">Done, next step ›</button><button class="link" type="button" id="skip">Skip for now</button></div>
+        <p class="honest">We can't see who follows, and you'll get the guide either way. Following is how you get the daily tips.</p>
+      </div>
+
+      <div class="step locked" id="step2">
+        <span class="tag">STEP 2</span>
+        <h3>Get instant access</h3>
+        <p class="small">Enter your email and the download appears right here. No waiting, no inbox hunting.</p>
+        <form id="form" novalidate>
+          <label class="f" for="firstName">First name <small>(optional)</small></label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" maxlength="60" placeholder="Maria">
+          <label class="f" for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com" inputmode="email">
+          <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <label class="check" for="launch">
+            <input id="launch" name="launch" type="checkbox">
+            <span><b>Yes, tell me when the official website launches.</b>
+            <span>Something bigger is coming: our official website with more resources and step-by-step lessons. Tick this to be among the first to know. Optional, and you can unsubscribe anytime.</span></span>
+          </label>
+          <button class="cta submit" type="submit" id="submit">Get my free guide ›</button>
+          <div class="err" id="err" role="alert"></div>
+          <p class="privacy-mini">We'll only email you if you tick the box (website launch news). We never sell or share your email. <a href="#privacy">Privacy</a></p>
+        </form>
+        <div class="success" id="success" aria-live="polite">
+          <span class="tag" style="background:var(--red)">DONE</span>
+          <div class="big">Your guide is <span>ready.</span></div>
+          <p class="small" id="mailMsg"></p>
+          <a class="cta" id="dl" href="AI-Made-Simple_Claude-Starter-Kit.pdf" target="_blank" rel="noopener" download>Download the PDF ›</a>
+          <p class="honest">Start with page 4 (the formula), then try one prompt from pages 6 to 10 today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soon">
+  <div class="wrap">
+    <div class="card">
+      <div class="kicker">Something bigger is coming</div>
+      <h2 style="color:#fff">Our official website is on the way.</h2>
+      <p>We're building the home for more resources, step-by-step lessons, tools and updates. Leave your email above and tick the launch box to be among the first to know when it opens.</p>
+      <a class="ghost" href="#get">Join the launch list ›</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="privacy">
+  <div class="wrap" style="max-width:820px">
+    <div class="kicker">Good to know</div>
+    <h2>Questions &amp; <span>privacy</span></h2>
+    <details open><summary>What happens to my email?</summary><p>We store it in a private spreadsheet that only AI Made Simple can access. We only email you if you tick the launch box, and then only about our official website. We never sell, rent or share your details, and we don't use them for anything else. Want it deleted? Just ask us on any of our channels.</p></details>
+    <details><summary>How do I unsubscribe?</summary><p>Every launch email has an unsubscribe link. You can also message us on any of our channels and we'll delete your details.</p></details>
+    <details><summary>Is it really free?</summary><p>Yes. No credit card, no trial, nothing to cancel. The guide is free to share with friends too.</p></details>
+    <details><summary>Do I need a paid Claude plan?</summary><p>No. The formula and prompts work on the free plan. Some features mentioned in the setup chapter may depend on your plan, and the guide notes that.</p></details>
+    <details><summary>Are you Anthropic?</summary><p>No. AI Made Simple is an independent, unofficial guide. We're not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr">2026</span> AI Made Simple · @aimadesimplewithpixel</div>
+    <div><a href="https://www.youtube.com/@AIMadeSimpleWithPixel" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@aimadesimplewithpixel" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/aimadesimplewithpixel" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/Tradesignalsdaily" target="_blank" rel="noopener">Facebook</a></div>
+    <div>Unofficial guide. Not affiliated with Anthropic.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Apps Script web app (lead capture). Set by deploy; empty = offline test mode.
+  var API = '__API_URL__';
+  var PDF = 'AI-Made-Simple_Claude-Starter-Kit.pdf';
+  var params = new URLSearchParams(location.search);
+  var source = (params.get('src') || params.get('utm_source') || 'direct').replace(/[^\w-]/g, '').slice(0, 30);
+  var $ = function (id) { return document.getElementById(id); };
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // step 1 → 2 (no fake verification: we only remember which links were clicked, for the visitor's own view)
+  document.querySelectorAll('.soc a').forEach(function (a) { a.addEventListener('click', function () { a.classList.add('done'); }); });
+  function openStep2(focus) {
+    $('step1').classList.remove('active'); $('step2').classList.remove('locked'); $('step2').classList.add('active');
+    if (focus) setTimeout(function () { $('email').focus({ preventScroll: true }); $('step2').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+  }
+  $('toStep2').addEventListener('click', function () { openStep2(true); });
+  $('skip').addEventListener('click', function () { openStep2(true); });
+  $('step2').addEventListener('click', function () { if ($('step2').classList.contains('locked')) openStep2(true); });
+
+  function done(emailStatus) {
+    $('form').style.display = 'none';
+    $('success').classList.add('show');
+    var onList = $('launch').checked;
+    $('mailMsg').textContent =
+      emailStatus === 'off' ? 'Tap below to open it, then save it to your phone.' + (onList ? ' You\'re on the launch list, so we\'ll let you know when the website opens.' : '') :
+      emailStatus === 'sent' ? 'We\'ve also emailed you a copy. If you don\'t see it in a few minutes, check Promotions or Spam.' :
+      emailStatus === 'queued' ? 'Lots of downloads today, so your email copy will arrive within 24 hours. Grab it here now.' :
+      'Tap below to open it. (We couldn\'t save your details this time, so we can\'t send you launch news. You can try again later.)';
+    try { localStorage.setItem('aims_kit', '1'); } catch (e) {}
+  }
+
+  $('form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var email = $('email').value.trim();
+    $('err').textContent = '';
+    if (!/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(email)) { $('err').textContent = 'Please enter a valid email address.'; $('email').focus(); return; }
+    var btn = $('submit'); btn.disabled = true; btn.textContent = 'One moment…';
+    var body = JSON.stringify({ email: email, firstName: $('firstName').value.trim(), launchOptIn: $('launch').checked, source: source, website: $('website').value });
+    if (!/^https:\/\/script\.google\.com\//.test(API)) { done('offline'); return; }
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 25000);
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body, redirect: 'follow', signal: ctrl ? ctrl.signal : undefined })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        clearTimeout(timer);
+        if (j && j.ok) { done(j.email); return; }
+        btn.disabled = false; btn.textContent = 'Get my free guide ›';
+        $('err').textContent = (j && j.error === 'invalid_email') ? 'That email doesn\'t look right. Please check it.' : 'Something went wrong. Please try again.';
+      })
+      .catch(function () { clearTimeout(timer); done('error'); });
+  });
+})();
+</script>
+</body>
+</html>
